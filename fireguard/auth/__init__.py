@@ -7,6 +7,6 @@ a las funciones del antivirus.
 """
 
 from .authenticator import Authenticator
-from .permissions import PermissionManager
+from .permissions import PermissionManager, Permission
 
-__all__ = ['Authenticator', 'PermissionManager']
+__all__ = ['Authenticator', 'PermissionManager', 'Permission']

@@ -6,7 +6,7 @@ incluyendo la generación, categorización y envío de alertas
 sobre amenazas detectadas y eventos del sistema.
 """
 
-from .alert_manager import AlertManager
-from .notification_service import NotificationService
+from .alert_manager import AlertManager, AlertLevel
+from .notification_service import NotificationService, NotificationChannel
 
-__all__ = ['AlertManager', 'NotificationService']
+__all__ = ['AlertManager', 'AlertLevel', 'NotificationService', 'NotificationChannel']
