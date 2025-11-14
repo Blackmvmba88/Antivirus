@@ -43,6 +43,8 @@ logs/
 # Config with secrets
 config/secrets.json
 config/local.json
+config/.key
+config/users.json
 
 # Database
 *.db
