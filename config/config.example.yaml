@@ -1,0 +1,90 @@
+# Configuración de FIREGUARD AI
+# Este es un archivo de ejemplo - copia y modifica según tus necesidades
+
+system:
+  name: "FIREGUARD AI"
+  version: "0.1.0"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+monitoring:
+  enabled: true
+  interval: 60  # Intervalo de escaneo en segundos
+  
+  # Habilitar/deshabilitar sensores individuales
+  sensors:
+    ports: true
+    processes: true
+    disk: true
+    logs: true
+
+security:
+  # Requiere autenticación para usar el sistema
+  require_authentication: true
+  
+  # Métodos de autenticación habilitados
+  # Opciones: local, github, google
+  auth_methods:
+    - local
+  
+  # Tiempo de expiración de sesión en segundos
+  session_timeout: 3600  # 1 hora
+
+# Configuración de alertas
+alerts:
+  enabled: true
+  
+  # Umbral de severidad
+  # Solo se mostrarán alertas con este nivel o superior
+  # Opciones: low, medium, high, critical
+  threshold: "medium"
+
+# Configuración de IA (funcionalidades futuras)
+ai:
+  # Habilitar detección de anomalías con IA
+  enabled: false
+  
+  # Activar análisis de anomalías
+  anomaly_detection: false
+  
+  # Configuración del detector de anomalías
+  anomaly_config:
+    sensitivity: "medium"  # low, medium, high
+    min_history_size: 10   # Mínimo de datos históricos requeridos
+
+# Configuración de autenticación OAuth (opcional)
+# Descomenta y configura si deseas usar GitHub o Google OAuth
+# auth:
+#   github:
+#     client_id: "tu_github_client_id"
+#     client_secret: "tu_github_client_secret"
+#   
+#   google:
+#     client_id: "tu_google_client_id"
+#     client_secret: "tu_google_client_secret"
+
+# Configuración específica de sensores
+sensor_config:
+  # Sensor de puertos
+  port_sensor:
+    # Puertos que se consideran peligrosos
+    dangerous_ports:
+      - 23    # Telnet
+      - 445   # SMB
+      - 3389  # RDP
+  
+  # Sensor de procesos
+  process_sensor:
+    # Umbrales de uso de recursos
+    cpu_threshold: 80.0     # Porcentaje
+    memory_threshold: 80.0  # Porcentaje
+  
+  # Sensor de disco
+  disk_sensor:
+    # Umbrales de espacio en disco
+    warning_threshold: 80.0   # Porcentaje
+    critical_threshold: 90.0  # Porcentaje
+  
+  # Sensor de logs
+  log_sensor:
+    # Número de líneas recientes a analizar por archivo
+    lines_to_scan: 100

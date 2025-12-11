@@ -1,0 +1,18 @@
+# Core dependencies
+psutil>=5.9.0
+pyyaml>=6.0
+
+# Authentication
+requests>=2.31.0
+cryptography>=41.0.0
+
+# CLI
+click>=8.1.0
+colorama>=0.4.6
+
+# Future AI/ML capabilities
+numpy>=1.24.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0

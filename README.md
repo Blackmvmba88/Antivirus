@@ -1,296 +1,349 @@
-# 🛡️ ANTIVIRUS
+# 🔥 FIREGUARD AI
 
-> **Sistema Defensivo Universal del Sistema**
-> 
-> A modern, intelligent, and open-source cybersecurity defense system for protecting files, processes, networks, and IoT ecosystems.
+**Sistema Modular Multiplataforma de Vigilancia y Seguridad con IA**
 
-```
-    ╔══════════════════════════════════════╗
-    ║     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ║
-    ║     ▓▓▓         🛡️          ▓▓▓    ║
-    ║     ▓▓▓      ANTIVIRUS      ▓▓▓    ║
-    ║     ▓▓▓   Universal Shield  ▓▓▓    ║
-    ║     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ║
-    ╚══════════════════════════════════════╝
-```
+FIREGUARD AI es un sistema de monitoreo de seguridad modular y expansible diseñado para vigilar puertos, logs, disco y procesos en múltiples plataformas. Incluye autenticación robusta y está preparado para integrar capacidades de inteligencia artificial para detección de anomalías.
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![Version](https://img.shields.io/badge/version-0.1.0--alpha-orange.svg)](https://github.com/Blackmvmba88/Antivirus/releases)
+## 🌟 Características
 
----
+### 🖥️ Multiplataforma
+- ✅ **macOS** - Soporte completo
+- ✅ **Windows** - Soporte completo
+- ✅ **Linux** - Soporte completo
+- ✅ **Android/Termux** - Soporte con limitaciones
 
-## 🌟 Vision
+### 🔒 Seguridad y Autenticación
+- **Autenticación Local** - Usuario y contraseña con encriptación
+- **GitHub OAuth** - Autenticación con cuenta de GitHub
+- **Google OAuth** - Autenticación con cuenta de Google
+- **Gestión de Sesiones** - Sistema seguro de tokens y sesiones
 
-**ANTIVIRUS** is not just another security tool—it's a complete defensive ecosystem designed for the modern age. From protecting individual systems to securing entire IoT networks, from educational labs to industrial infrastructure, ANTIVIRUS evolves with the threats it faces.
+### 📡 Sensores de Monitoreo
+Los sensores son módulos expansibles que monitorizan aspectos específicos del sistema:
 
-### Why ANTIVIRUS?
+1. **PortSensor** - Vigilancia de puertos abiertos y conexiones
+   - Detecta puertos peligrosos
+   - Monitorea conexiones establecidas
+   - Identifica servicios en ejecución
 
-- **🔓 Open Source**: Transparent security you can trust and audit
-- **🧠 Intelligent**: Behavioral analysis beyond signature-based detection
-- **🌐 Universal**: From Raspberry Pi to enterprise servers
-- **📚 Educational**: Learn cybersecurity by doing
-- **🤝 Collaborative**: Community-driven threat intelligence
+2. **ProcessSensor** - Monitoreo de procesos en ejecución
+   - Detecta procesos sospechosos
+   - Monitorea uso de CPU y memoria
+   - Identifica sobrecarga del sistema
 
----
+3. **DiskSensor** - Monitoreo de espacio en disco
+   - Detecta bajo espacio en disco
+   - Monitorea particiones
+   - Alertas de espacio crítico
 
-## 🚀 Quick Start
+4. **LogSensor** - Análisis de logs del sistema
+   - Busca patrones sospechosos
+   - Detecta intentos de autenticación fallidos
+   - Identifica eventos de seguridad
 
-### Installation
+### 🤖 Preparado para IA
+- **AnomalyDetector** - Base para detección de anomalías con machine learning
+- **AlertSystem** - Sistema centralizado de gestión de alertas
+- Análisis estadístico de métricas del sistema
+- Arquitectura lista para integrar modelos de ML/IA
+
+## 🚀 Instalación
+
+### Requisitos
+- Python 3.8 o superior
+- pip (gestor de paquetes de Python)
+
+### Instalación básica
 
 ```bash
-# Clone the repository
+# Clonar el repositorio
 git clone https://github.com/Blackmvmba88/Antivirus.git
 cd Antivirus
 
-# Install dependencies
+# Instalar dependencias
 pip install -r requirements.txt
 
-# Install ANTIVIRUS
+# Instalar FIREGUARD
 pip install -e .
 ```
 
-### Basic Usage
+### Instalación en Termux (Android)
 
 ```bash
-# Scan a directory
-antivirus scan /home/user/Downloads
+# Actualizar paquetes
+pkg update && pkg upgrade
 
-# Scan running processes
-antivirus scan-processes
+# Instalar Python
+pkg install python
 
-# Scan downloads folder
-antivirus scan-downloads
+# Instalar dependencias del sistema
+pkg install build-essential
 
-# Get help
-antivirus --help
+# Instalar FIREGUARD
+pip install -r requirements.txt
+pip install -e .
 ```
 
----
+## 📖 Uso
 
-## 📦 Features (v0.1 - Local Scanner)
+### CLI - Interfaz de Línea de Comandos
 
-### Current Capabilities
+FIREGUARD proporciona una interfaz de línea de comandos completa:
 
-✅ **File Scanner**
-- Hash-based malware detection
-- Dangerous extension identification
-- Malicious script pattern recognition
-- Severity-based threat reporting
+```bash
+# Mostrar información del sistema
+fireguard info
 
-✅ **Process Scanner**
-- Running process analysis
-- Suspicious behavior detection
+# Ejecutar escaneo de seguridad (todos los sensores)
+fireguard scan
 
-✅ **Smart Detection**
-- Local signature database (JSON)
-- Extensible pattern matching
-- Detailed threat reports
+# Escanear sensor específico
+fireguard scan --sensor ports
+fireguard scan --sensor processes
+fireguard scan --sensor disk
+fireguard scan --sensor logs
 
-### Example Output
+# Generar reporte en formato JSON
+fireguard scan --format json
 
-```
-🛡️ ANTIVIRUS v0.1.0 - Scanning /home/user/Downloads
+# Autenticación
+fireguard auth
 
-[HIGH] Detected: suspicious.exe
-  - Reason: Matches known malware hash (MD5: a1b2c3d4...)
-  - Action: Quarantine recommended
+# Generar reporte completo
+fireguard report
 
-[MEDIUM] Warning: script.sh
-  - Reason: Contains potentially malicious pattern (eval injection)
-  - Action: Review manually
+# Guardar reporte en archivo
+fireguard report --output report.json
 
-[INFO] Clean: document.pdf
-  - No threats detected
+# Mostrar configuración
+fireguard config
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Scan Summary:
-  Total Files: 127
-  Threats: 2 (1 HIGH, 1 MEDIUM)
-  Clean: 125
-  Time: 2.3s
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Mostrar ayuda
+fireguard --help
 ```
 
----
+### Uso Programático
 
-## 🗺️ Roadmap
+```python
+from fireguard.core import PlatformDetector, ConfigManager, Logger
+from fireguard.sensors import PortSensor, ProcessSensor, DiskSensor
+from fireguard.auth import AuthManager
+from fireguard.ai import AlertSystem, AnomalyDetector
 
-ANTIVIRUS follows an ambitious, phased development roadmap:
+# Detectar plataforma
+platform = PlatformDetector()
+print(f"Plataforma: {platform.platform_name}")
 
-### ✅ Phase 0 - Foundation (COMPLETE)
-- Professional documentation
-- Contribution guidelines
-- Issue templates
-- Project structure
+# Inicializar configuración
+config = ConfigManager()
 
-### 🔨 Phase 1 - Local Scanner (IN PROGRESS - v0.1)
-- CLI interface
-- File & process scanning
-- Signature-based detection
-- Severity reporting
+# Autenticación
+auth_manager = AuthManager(config)
+token = auth_manager.authenticate_local("admin", "password")
 
-### 📋 Phase 2 - Live Shield (v0.2)
-- Real-time monitoring
-- Process, port, and memory watching
-- Anomaly detection
-- Live threat alerts
+# Ejecutar sensores
+port_sensor = PortSensor(config)
+result = port_sensor.run()
 
-### 🧠 Phase 3 - Behavioral Defender (v0.3)
-- Machine learning integration
-- Behavioral analysis
-- Risk scoring (0-100)
-- Intelligent threat prediction
+# Sistema de alertas
+alert_system = AlertSystem(config)
+alert_system.add_alerts(result['alerts'])
 
-### 🏥 Phase 4 - Safe Room (v0.4)
-- Sandboxing capabilities
-- Automatic threat containment
-- Safe rollback mechanisms
-- System recovery tools
-
-### 🌐 Phase 5 - Network Guardian (v0.5)
-- Intelligent firewall
-- Dynamic rule generation
-- C2 server blocking
-- Network traffic analysis
-
-### 🔌 Phase 6 - IoT Defender (v0.6)
-- IoT device discovery
-- Network mapping
-- Device fingerprinting
-- Smart home protection
-
-### 🌍 Phase 7 - Collective Mind (v0.7)
-- P2P threat intelligence
-- Anonymous threat sharing
-- Community-driven updates
-- Distributed detection
-
-### 🤖 Phase 8 - Cyber Reasoner (v0.8)
-- Natural language threat analysis
-- Automatic remediation suggestions
-- Interactive threat explanation
-- AI-powered insights
-
-### 🎓 Phase 9 - Cyber Academy (v1.0)
-- Virtual malware lab
-- Interactive courses
-- Certification programs
-- Educational platform
-
-### 🏭 Phase 10 - Industrial Guardian (v1.5)
-- Enterprise dashboard
-- Multi-device management
-- Professional alerting
-- Industrial deployment
-
-### 🔮 Phase 11 - Cyber Consciousness (v2.0)
-- System memory semantics
-- Time-travel debugging
-- Predictive threat modeling
-- Phenomenological defense
-
----
-
-## 🏗️ Architecture
-
-```
-antivirus/
-├── core/              # Core detection engine
-│   ├── scanner.py     # File scanning logic
-│   ├── detector.py    # Threat detection algorithms
-│   └── analyzer.py    # Behavioral analysis
-├── agents/            # Specialized agents
-│   ├── file.py        # File system agent
-│   ├── process.py     # Process monitoring agent
-│   ├── network.py     # Network traffic agent
-│   └── memory.py      # Memory analysis agent
-├── database/          # Threat intelligence
-│   ├── signatures.json    # Malware signatures
-│   ├── patterns.json      # Malicious patterns
-│   └── hashes.json        # Known threat hashes
-├── cli/               # Command-line interface
-│   └── main.py        # CLI entry point
-└── utils/             # Utilities
-    ├── logger.py      # Semantic logging
-    └── reporter.py    # Report generation
+# Detección de anomalías
+anomaly_detector = AnomalyDetector(config)
+anomaly_detector.enable()
 ```
 
-### Design Principles
+## 🏗️ Arquitectura
 
-1. **Modular**: Each component is independent and testable
-2. **Extensible**: Easy to add new detection methods
-3. **Performant**: Efficient scanning with minimal overhead
-4. **Transparent**: Clear logging and explainable decisions
-5. **Privacy-First**: Local processing, optional telemetry
+### Estructura del Proyecto
+
+```
+fireguard/
+├── core/                    # Núcleo del sistema
+│   ├── platform_detector.py  # Detección de plataforma
+│   ├── config_manager.py     # Gestión de configuración
+│   ├── logger.py             # Sistema de logging
+│   └── sensor_base.py        # Clase base para sensores
+├── auth/                    # Sistema de autenticación
+│   ├── auth_manager.py       # Gestor central de autenticación
+│   ├── local_auth.py         # Autenticación local
+│   ├── github_auth.py        # OAuth GitHub
+│   └── google_auth.py        # OAuth Google
+├── sensors/                 # Sensores de monitoreo
+│   ├── port_sensor.py        # Sensor de puertos
+│   ├── process_sensor.py     # Sensor de procesos
+│   ├── disk_sensor.py        # Sensor de disco
+│   └── log_sensor.py         # Sensor de logs
+├── ai/                      # Capacidades de IA
+│   ├── anomaly_detector.py   # Detector de anomalías
+│   └── alert_system.py       # Sistema de alertas
+└── cli/                     # Interfaz de línea de comandos
+    └── main.py               # CLI principal
+```
+
+### Diseño Modular
+
+El sistema está diseñado con una arquitectura modular que permite:
+
+1. **Expansibilidad** - Fácil adición de nuevos sensores
+2. **Mantenibilidad** - Código claro y bien documentado
+3. **Flexibilidad** - Configuración adaptable a diferentes necesidades
+4. **Escalabilidad** - Preparado para crecer con nuevas capacidades
+
+## 🔧 Configuración
+
+El sistema utiliza archivos de configuración YAML/JSON:
+
+```yaml
+system:
+  name: "FIREGUARD AI"
+  version: "0.1.0"
+  log_level: "INFO"
+
+monitoring:
+  enabled: true
+  interval: 60  # segundos
+  sensors:
+    ports: true
+    processes: true
+    disk: true
+    logs: true
+
+security:
+  require_authentication: true
+  auth_methods: ["local"]  # local, github, google
+  session_timeout: 3600
+
+alerts:
+  enabled: true
+  threshold: "medium"  # low, medium, high, critical
+
+ai:
+  enabled: false
+  anomaly_detection: false
+```
+
+### Autenticación OAuth
+
+Para usar GitHub o Google OAuth, configure las credenciales:
+
+```yaml
+auth:
+  github:
+    client_id: "your_github_client_id"
+    client_secret: "your_github_client_secret"
+  google:
+    client_id: "your_google_client_id"
+    client_secret: "your_google_client_secret"
+```
+
+## 🔐 Seguridad
+
+### Usuario por Defecto
+
+⚠️ **IMPORTANTE**: Al instalar, se crea un usuario administrador por defecto:
+- **Usuario**: `admin`
+- **Contraseña**: `fireguard2024`
+
+**DEBE cambiar estas credenciales inmediatamente** en producción.
+
+### Mejores Prácticas
+
+1. Cambie las credenciales por defecto
+2. Use autenticación OAuth cuando sea posible
+3. Configure umbrales de alertas apropiados
+4. Revise los logs regularmente
+5. Mantenga el sistema actualizado
+
+## 🛠️ Desarrollo
+
+### Crear un Nuevo Sensor
+
+```python
+from fireguard.core.sensor_base import SensorBase
+from typing import Dict, Any, List
+
+class MiSensor(SensorBase):
+    def __init__(self, config=None):
+        super().__init__("MiSensor", config)
+    
+    def scan(self) -> Dict[str, Any]:
+        # Implementar lógica de escaneo
+        return {"data": "..."}
+    
+    def analyze(self, scan_results: Dict[str, Any]) -> List[Dict[str, Any]]:
+        # Implementar análisis y detección de anomalías
+        alerts = []
+        return alerts
+```
+
+### Ejecutar Tests
+
+```bash
+# Instalar dependencias de desarrollo
+pip install pytest pytest-cov
+
+# Ejecutar tests
+pytest
+
+# Con cobertura
+pytest --cov=fireguard
+```
+
+## 📊 Ejemplo de Reporte
+
+```json
+{
+  "timestamp": "2024-11-14T10:00:00",
+  "version": "0.1.0",
+  "platform": {
+    "platform_type": "linux",
+    "details": {...}
+  },
+  "sensors": [
+    {
+      "sensor": "PortSensor",
+      "status": "success",
+      "alerts": [...]
+    }
+  ],
+  "alert_summary": {
+    "total": 5,
+    "by_severity": {
+      "high": 2,
+      "medium": 3
+    }
+  }
+}
+```
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas! Para contribuir:
+
+1. Fork el proyecto
+2. Cree una rama para su característica (`git checkout -b feature/AmazingFeature`)
+3. Commit sus cambios (`git commit -m 'Add AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abra un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](LICENSE) para más detalles.
+
+## 🙏 Agradecimientos
+
+- Comunidad de código abierto
+- Contribuidores del proyecto
+- Herramientas y librerías utilizadas (psutil, click, colorama, etc.)
+
+## 📧 Contacto
+
+Para preguntas, sugerencias o reportar problemas:
+- Abra un issue en GitHub
+- Consulte la documentación en `docs/`
 
 ---
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide for:
-
-- Code of Conduct
-- Development setup
-- Contribution workflow
-- Coding standards
-- Testing requirements
-
----
-
-## 📚 Documentation
-
-- [Installation Guide](docs/installation.md)
-- [Architecture Overview](docs/architecture.md)
-- [Module Documentation](docs/modules.md)
-- [API Reference](docs/api.md)
-- [Roadmap Details](docs/roadmap.md)
-
----
-
-## 📄 License
-
-ANTIVIRUS is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for details.
-
-This means you can:
-- ✅ Use commercially
-- ✅ Modify and distribute
-- ✅ Use privately
-- ✅ Include patent grants
-
----
-
-## 🙏 Acknowledgments
-
-Built with ❤️ by the security community, for the security community.
-
-Special thanks to:
-- All contributors and security researchers
-- Open-source security tools that inspire us
-- The maker and IoT communities
-
----
-
-## 📧 Contact
-
-- **Issues**: [GitHub Issues](https://github.com/Blackmvmba88/Antivirus/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Blackmvmba88/Antivirus/discussions)
-- **Security**: Report vulnerabilities via GitHub Security Advisories
-
----
-
-## ⚠️ Disclaimer
-
-ANTIVIRUS is provided "AS IS" without warranty. While we strive for comprehensive protection, no security tool is 100% effective. Always practice defense in depth and maintain regular backups.
-
----
-
-<div align="center">
-
-**🛡️ Protect. Detect. Defend. 🛡️**
-
-Made with passion for a safer digital world
-
-[⭐ Star us on GitHub](https://github.com/Blackmvmba88/Antivirus) | [🐛 Report Bug](https://github.com/Blackmvmba88/Antivirus/issues) | [💡 Request Feature](https://github.com/Blackmvmba88/Antivirus/issues)
-
-</div>
+**FIREGUARD AI** - Protegiendo tu sistema con inteligencia 🔥🛡️
