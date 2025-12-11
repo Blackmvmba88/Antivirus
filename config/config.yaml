@@ -1,0 +1,23 @@
+ai:
+  anomaly_detection: false
+  enabled: false
+alerts:
+  enabled: true
+  threshold: medium
+monitoring:
+  enabled: true
+  interval: 60
+  sensors:
+    disk: true
+    logs: true
+    ports: true
+    processes: true
+security:
+  auth_methods:
+  - local
+  require_authentication: true
+  session_timeout: 3600
+system:
+  log_level: INFO
+  name: FIREGUARD AI
+  version: 0.1.0
