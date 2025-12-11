@@ -1,20 +1,11 @@
 """
-FIREGUARD AI - Sistema Modular de Vigilancia y Seguridad
-Version: 0.1.0
+FIREGUARD AI - Antivirus System
 
-Sistema multiplataforma para monitoreo de seguridad con capacidades de IA.
+Sistema de antivirus multiplataforma con monitoreo en tiempo real,
+detección de amenazas y respuesta automatizada.
+
+Este paquete contiene los módulos principales del sistema FIREGUARD AI.
 """
 
 __version__ = "0.1.0"
-__author__ = "FIREGUARD Team"
-
-from fireguard.core.platform_detector import PlatformDetector
-from fireguard.core.config_manager import ConfigManager
-from fireguard.core.logger import Logger
-
-__all__ = [
-    "PlatformDetector",
-    "ConfigManager", 
-    "Logger",
-    "__version__",
-]
+__author__ = "FIREGUARD AI Team"

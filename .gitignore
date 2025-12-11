@@ -16,47 +16,72 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual Environment
+# Virtual environments
 venv/
 env/
 ENV/
+env.bak/
+venv.bak/
 
-# IDE
-.vscode/
+# PyCharm
 .idea/
-*.swp
-*.swo
-*~
 
-# OS
-.DS_Store
-Thumbs.db
+# VS Code
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
 
 # Logs
 *.log
 logs/
+*.log.*
 
-# Config with secrets
-config/secrets.json
-config/local.json
-config/.key
-config/users.json
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Quarantine directory
+quarantine/
 
 # Database
 *.db
 *.sqlite
 *.sqlite3
 
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
+.tox/
 
-# Temporary files
-tmp/
-temp/
-*.tmp
+# Distribution / packaging
+*.whl
+
+# Backups
+*.bak
+*.backup
+*~
+
+# Configuration overrides (optional, keep config.yaml tracked)
+config.local.yaml
+config.*.yaml
+!config.yaml

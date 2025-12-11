@@ -1,15 +1,12 @@
 """
-Authentication module initialization
+Authentication Module - Módulo de Autenticación
+
+Este módulo maneja la autenticación y autorización del sistema,
+incluyendo gestión de usuarios, permisos y control de acceso
+a las funciones del antivirus.
 """
 
-from fireguard.auth.auth_manager import AuthManager
-from fireguard.auth.local_auth import LocalAuth
-from fireguard.auth.github_auth import GitHubAuth
-from fireguard.auth.google_auth import GoogleAuth
+from .authenticator import Authenticator
+from .permissions import PermissionManager, Permission
 
-__all__ = [
-    "AuthManager",
-    "LocalAuth",
-    "GitHubAuth",
-    "GoogleAuth",
-]
+__all__ = ['Authenticator', 'PermissionManager', 'Permission']

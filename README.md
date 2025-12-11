@@ -1,349 +1,168 @@
-# 🔥 FIREGUARD AI
+# FIREGUARD AI
 
-**Sistema Modular Multiplataforma de Vigilancia y Seguridad con IA**
+Sistema de antivirus multiplataforma con capacidades de monitoreo en tiempo real, detección de amenazas y respuesta automatizada.
 
-FIREGUARD AI es un sistema de monitoreo de seguridad modular y expansible diseñado para vigilar puertos, logs, disco y procesos en múltiples plataformas. Incluye autenticación robusta y está preparado para integrar capacidades de inteligencia artificial para detección de anomalías.
+## 🛡️ Características
 
-## 🌟 Características
+- **Monitoreo en Tiempo Real**: Vigilancia continua de puertos y actividades del sistema
+- **Análisis de Logs**: Detección de patrones sospechosos en logs del sistema
+- **Sistema de Alertas**: Notificaciones configurables por múltiples canales
+- **Autenticación**: Sistema de control de acceso y permisos
+- **Multiplataforma**: Compatible con Windows, Linux y macOS
+- **Arquitectura Modular**: Diseño extensible y mantenible
 
-### 🖥️ Multiplataforma
-- ✅ **macOS** - Soporte completo
-- ✅ **Windows** - Soporte completo
-- ✅ **Linux** - Soporte completo
-- ✅ **Android/Termux** - Soporte con limitaciones
+## 📋 Requisitos
 
-### 🔒 Seguridad y Autenticación
-- **Autenticación Local** - Usuario y contraseña con encriptación
-- **GitHub OAuth** - Autenticación con cuenta de GitHub
-- **Google OAuth** - Autenticación con cuenta de Google
-- **Gestión de Sesiones** - Sistema seguro de tokens y sesiones
-
-### 📡 Sensores de Monitoreo
-Los sensores son módulos expansibles que monitorizan aspectos específicos del sistema:
-
-1. **PortSensor** - Vigilancia de puertos abiertos y conexiones
-   - Detecta puertos peligrosos
-   - Monitorea conexiones establecidas
-   - Identifica servicios en ejecución
-
-2. **ProcessSensor** - Monitoreo de procesos en ejecución
-   - Detecta procesos sospechosos
-   - Monitorea uso de CPU y memoria
-   - Identifica sobrecarga del sistema
-
-3. **DiskSensor** - Monitoreo de espacio en disco
-   - Detecta bajo espacio en disco
-   - Monitorea particiones
-   - Alertas de espacio crítico
-
-4. **LogSensor** - Análisis de logs del sistema
-   - Busca patrones sospechosos
-   - Detecta intentos de autenticación fallidos
-   - Identifica eventos de seguridad
-
-### 🤖 Preparado para IA
-- **AnomalyDetector** - Base para detección de anomalías con machine learning
-- **AlertSystem** - Sistema centralizado de gestión de alertas
-- Análisis estadístico de métricas del sistema
-- Arquitectura lista para integrar modelos de ML/IA
+- Python 3.8 o superior
+- Permisos de administrador/root para ciertas funcionalidades
 
 ## 🚀 Instalación
 
-### Requisitos
-- Python 3.8 o superior
-- pip (gestor de paquetes de Python)
-
-### Instalación básica
-
+1. **Clonar el repositorio**:
 ```bash
-# Clonar el repositorio
 git clone https://github.com/Blackmvmba88/Antivirus.git
 cd Antivirus
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Instalar FIREGUARD
-pip install -e .
 ```
 
-### Instalación en Termux (Android)
+2. **Crear entorno virtual** (recomendado):
+```bash
+python -m venv venv
+
+# En Linux/macOS:
+source venv/bin/activate
+
+# En Windows:
+venv\Scripts\activate
+```
+
+3. **Instalar dependencias**:
+```bash
+pip install -r requirements.txt
+```
+
+## 💻 Uso
+
+### Ejecución Básica
 
 ```bash
-# Actualizar paquetes
-pkg update && pkg upgrade
-
-# Instalar Python
-pkg install python
-
-# Instalar dependencias del sistema
-pkg install build-essential
-
-# Instalar FIREGUARD
-pip install -r requirements.txt
-pip install -e .
+python main.py
 ```
 
-## 📖 Uso
-
-### CLI - Interfaz de Línea de Comandos
-
-FIREGUARD proporciona una interfaz de línea de comandos completa:
+### Opciones de Línea de Comandos
 
 ```bash
-# Mostrar información del sistema
-fireguard info
+# Especificar archivo de configuración personalizado
+python main.py --config mi_config.yaml
 
-# Ejecutar escaneo de seguridad (todos los sensores)
-fireguard scan
+# Establecer nivel de logging
+python main.py --log-level DEBUG
 
-# Escanear sensor específico
-fireguard scan --sensor ports
-fireguard scan --sensor processes
-fireguard scan --sensor disk
-fireguard scan --sensor logs
-
-# Generar reporte en formato JSON
-fireguard scan --format json
-
-# Autenticación
-fireguard auth
-
-# Generar reporte completo
-fireguard report
-
-# Guardar reporte en archivo
-fireguard report --output report.json
-
-# Mostrar configuración
-fireguard config
-
-# Mostrar ayuda
-fireguard --help
+# Guardar logs en archivo
+python main.py --log-file logs/fireguard.log
 ```
 
-### Uso Programático
+### Configuración
 
-```python
-from fireguard.core import PlatformDetector, ConfigManager, Logger
-from fireguard.sensors import PortSensor, ProcessSensor, DiskSensor
-from fireguard.auth import AuthManager
-from fireguard.ai import AlertSystem, AnomalyDetector
+El archivo `config.yaml` contiene todas las configuraciones del sistema:
 
-# Detectar plataforma
-platform = PlatformDetector()
-print(f"Plataforma: {platform.platform_name}")
+- **Sistema**: Nombre, versión y configuración de plataforma
+- **Logging**: Nivel de detalle y destinos de logs
+- **Sensores**: Configuración de monitoreo de puertos y logs
+- **Alertas**: Canales de notificación y umbrales
+- **Autenticación**: Configuración de acceso y permisos
 
-# Inicializar configuración
-config = ConfigManager()
-
-# Autenticación
-auth_manager = AuthManager(config)
-token = auth_manager.authenticate_local("admin", "password")
-
-# Ejecutar sensores
-port_sensor = PortSensor(config)
-result = port_sensor.run()
-
-# Sistema de alertas
-alert_system = AlertSystem(config)
-alert_system.add_alerts(result['alerts'])
-
-# Detección de anomalías
-anomaly_detector = AnomalyDetector(config)
-anomaly_detector.enable()
-```
-
-## 🏗️ Arquitectura
-
-### Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
-fireguard/
-├── core/                    # Núcleo del sistema
-│   ├── platform_detector.py  # Detección de plataforma
-│   ├── config_manager.py     # Gestión de configuración
-│   ├── logger.py             # Sistema de logging
-│   └── sensor_base.py        # Clase base para sensores
-├── auth/                    # Sistema de autenticación
-│   ├── auth_manager.py       # Gestor central de autenticación
-│   ├── local_auth.py         # Autenticación local
-│   ├── github_auth.py        # OAuth GitHub
-│   └── google_auth.py        # OAuth Google
-├── sensors/                 # Sensores de monitoreo
-│   ├── port_sensor.py        # Sensor de puertos
-│   ├── process_sensor.py     # Sensor de procesos
-│   ├── disk_sensor.py        # Sensor de disco
-│   └── log_sensor.py         # Sensor de logs
-├── ai/                      # Capacidades de IA
-│   ├── anomaly_detector.py   # Detector de anomalías
-│   └── alert_system.py       # Sistema de alertas
-└── cli/                     # Interfaz de línea de comandos
-    └── main.py               # CLI principal
+Antivirus/
+├── fireguard/              # Paquete principal
+│   ├── __init__.py
+│   ├── core/              # Motor principal
+│   │   ├── __init__.py
+│   │   └── engine.py
+│   ├── sensors/           # Módulos de monitoreo
+│   │   ├── __init__.py
+│   │   ├── port_monitor.py
+│   │   └── log_analyzer.py
+│   ├── auth/              # Autenticación y permisos
+│   │   ├── __init__.py
+│   │   ├── authenticator.py
+│   │   └── permissions.py
+│   ├── alerts/            # Sistema de alertas
+│   │   ├── __init__.py
+│   │   ├── alert_manager.py
+│   │   └── notification_service.py
+│   └── utils/             # Utilidades compartidas
+│       ├── __init__.py
+│       ├── config_loader.py
+│       ├── logger.py
+│       └── file_utils.py
+├── main.py                # Punto de entrada
+├── config.yaml            # Configuración principal
+├── requirements.txt       # Dependencias
+├── .gitignore            # Archivos ignorados por Git
+└── README.md             # Este archivo
 ```
 
-### Diseño Modular
+## 🔧 Módulos
 
-El sistema está diseñado con una arquitectura modular que permite:
+### Core (Motor Principal)
+Coordina todos los componentes del sistema y gestiona el ciclo de vida del antivirus.
 
-1. **Expansibilidad** - Fácil adición de nuevos sensores
-2. **Mantenibilidad** - Código claro y bien documentado
-3. **Flexibilidad** - Configuración adaptable a diferentes necesidades
-4. **Escalabilidad** - Preparado para crecer con nuevas capacidades
+### Sensors (Sensores)
+- **Port Monitor**: Monitoreo de puertos y conexiones de red
+- **Log Analyzer**: Análisis de logs del sistema
 
-## 🔧 Configuración
+### Auth (Autenticación)
+- **Authenticator**: Sistema de autenticación de usuarios
+- **Permissions**: Gestión de permisos y control de acceso
 
-El sistema utiliza archivos de configuración YAML/JSON:
+### Alerts (Alertas)
+- **Alert Manager**: Gestión de alertas de seguridad
+- **Notification Service**: Envío de notificaciones por múltiples canales
 
-```yaml
-system:
-  name: "FIREGUARD AI"
-  version: "0.1.0"
-  log_level: "INFO"
-
-monitoring:
-  enabled: true
-  interval: 60  # segundos
-  sensors:
-    ports: true
-    processes: true
-    disk: true
-    logs: true
-
-security:
-  require_authentication: true
-  auth_methods: ["local"]  # local, github, google
-  session_timeout: 3600
-
-alerts:
-  enabled: true
-  threshold: "medium"  # low, medium, high, critical
-
-ai:
-  enabled: false
-  anomaly_detection: false
-```
-
-### Autenticación OAuth
-
-Para usar GitHub o Google OAuth, configure las credenciales:
-
-```yaml
-auth:
-  github:
-    client_id: "your_github_client_id"
-    client_secret: "your_github_client_secret"
-  google:
-    client_id: "your_google_client_id"
-    client_secret: "your_google_client_secret"
-```
-
-## 🔐 Seguridad
-
-### Usuario por Defecto
-
-⚠️ **IMPORTANTE**: Al instalar, se crea un usuario administrador por defecto:
-- **Usuario**: `admin`
-- **Contraseña**: `fireguard2024`
-
-**DEBE cambiar estas credenciales inmediatamente** en producción.
-
-### Mejores Prácticas
-
-1. Cambie las credenciales por defecto
-2. Use autenticación OAuth cuando sea posible
-3. Configure umbrales de alertas apropiados
-4. Revise los logs regularmente
-5. Mantenga el sistema actualizado
+### Utils (Utilidades)
+- **Config Loader**: Carga de configuración
+- **Logger**: Sistema de logging
+- **File Utils**: Utilidades para manejo de archivos
 
 ## 🛠️ Desarrollo
 
-### Crear un Nuevo Sensor
+Este proyecto está diseñado con modularidad en mente. Cada módulo tiene:
+- Docstrings completos explicando su propósito
+- Interfaces claras y bien definidas
+- Código básico listo para expansión
 
-```python
-from fireguard.core.sensor_base import SensorBase
-from typing import Dict, Any, List
+### Próximos Pasos de Desarrollo
 
-class MiSensor(SensorBase):
-    def __init__(self, config=None):
-        super().__init__("MiSensor", config)
-    
-    def scan(self) -> Dict[str, Any]:
-        # Implementar lógica de escaneo
-        return {"data": "..."}
-    
-    def analyze(self, scan_results: Dict[str, Any]) -> List[Dict[str, Any]]:
-        # Implementar análisis y detección de anomalías
-        alerts = []
-        return alerts
-```
-
-### Ejecutar Tests
-
-```bash
-# Instalar dependencias de desarrollo
-pip install pytest pytest-cov
-
-# Ejecutar tests
-pytest
-
-# Con cobertura
-pytest --cov=fireguard
-```
-
-## 📊 Ejemplo de Reporte
-
-```json
-{
-  "timestamp": "2024-11-14T10:00:00",
-  "version": "0.1.0",
-  "platform": {
-    "platform_type": "linux",
-    "details": {...}
-  },
-  "sensors": [
-    {
-      "sensor": "PortSensor",
-      "status": "success",
-      "alerts": [...]
-    }
-  ],
-  "alert_summary": {
-    "total": 5,
-    "by_severity": {
-      "high": 2,
-      "medium": 3
-    }
-  }
-}
-```
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas! Para contribuir:
-
-1. Fork el proyecto
-2. Cree una rama para su característica (`git checkout -b feature/AmazingFeature`)
-3. Commit sus cambios (`git commit -m 'Add AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abra un Pull Request
+1. Implementar lógica completa de escaneo de puertos
+2. Añadir detección de malware basada en firmas
+3. Integrar machine learning para detección de anomalías
+4. Implementar cuarentena de archivos
+5. Añadir interfaz gráfica (GUI)
+6. Expandir soporte para múltiples canales de notificación
 
 ## 📝 Licencia
 
-Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](LICENSE) para más detalles.
+Ver archivo `LICENSE` para más detalles.
 
-## 🙏 Agradecimientos
+## 👥 Contribución
 
-- Comunidad de código abierto
-- Contribuidores del proyecto
-- Herramientas y librerías utilizadas (psutil, click, colorama, etc.)
+Las contribuciones son bienvenidas. Por favor:
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📧 Contacto
 
-Para preguntas, sugerencias o reportar problemas:
-- Abra un issue en GitHub
-- Consulte la documentación en `docs/`
+Para preguntas o sugerencias, por favor abre un issue en el repositorio.
+
+## ⚠️ Disclaimer
+
+Este es un proyecto en desarrollo. Usar bajo tu propio riesgo. No nos hacemos responsables por daños al sistema o pérdida de datos.
 
 ---
 
-**FIREGUARD AI** - Protegiendo tu sistema con inteligencia 🔥🛡️
+**FIREGUARD AI** - Protección Inteligente para tu Sistema 🛡️

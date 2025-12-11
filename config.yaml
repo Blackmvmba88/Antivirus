@@ -1,0 +1,67 @@
+# FIREGUARD AI - Configuration File
+
+system:
+  name: "FIREGUARD AI"
+  version: "0.1.0"
+  platform: "multi"  # Multiplataforma: Windows, Linux, macOS
+
+# Configuración de logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/fireguard.log"
+  console: true
+
+# Sensores de monitoreo
+sensors:
+  # Monitor de puertos
+  port_monitor:
+    enabled: true
+    monitored_ports:
+      - 80    # HTTP
+      - 443   # HTTPS
+      - 22    # SSH
+      - 21    # FTP
+      - 3389  # RDP
+    scan_interval: 60  # segundos
+
+  # Analizador de logs
+  log_analyzer:
+    enabled: true
+    log_paths:
+      - "/var/log/syslog"      # Linux
+      - "/var/log/auth.log"    # Linux
+      - "C:\\Windows\\System32\\winevt\\Logs"  # Windows
+    suspicious_patterns:
+      - "failed password"
+      - "authentication failure"
+      - "unauthorized access"
+
+# Sistema de alertas
+alerts:
+  channels:
+    - "console"
+    - "log"
+    # - "email"  # Deshabilitado por defecto
+    # - "sms"    # Deshabilitado por defecto
+  
+  recipients:
+    email: []
+    sms: []
+  
+  thresholds:
+    info: true
+    warning: true
+    critical: true
+    emergency: true
+
+# Autenticación y autorización
+auth:
+  enabled: false  # Deshabilitado por defecto para facilitar inicio
+  require_login: false
+  session_timeout: 3600  # segundos
+
+# Utilidades
+utils:
+  quarantine_dir: "quarantine"
+  temp_dir: "temp"
+  max_file_size_mb: 100

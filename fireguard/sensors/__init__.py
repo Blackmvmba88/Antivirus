@@ -1,15 +1,12 @@
 """
-Sensors module initialization
+Sensors Module - Módulo de Sensores
+
+Este módulo contiene los sensores de monitoreo del sistema,
+incluyendo monitoreo de puertos, análisis de logs y detección
+de actividades sospechosas en el sistema.
 """
 
-from fireguard.sensors.port_sensor import PortSensor
-from fireguard.sensors.process_sensor import ProcessSensor
-from fireguard.sensors.disk_sensor import DiskSensor
-from fireguard.sensors.log_sensor import LogSensor
+from .port_monitor import PortMonitor
+from .log_analyzer import LogAnalyzer
 
-__all__ = [
-    "PortSensor",
-    "ProcessSensor",
-    "DiskSensor",
-    "LogSensor",
-]
+__all__ = ['PortMonitor', 'LogAnalyzer']

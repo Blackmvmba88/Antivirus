@@ -1,18 +1,28 @@
+# Python dependencies for FIREGUARD AI
+
 # Core dependencies
-psutil>=5.9.0
-pyyaml>=6.0
+pyyaml>=6.0.1        # Configuration file parsing
+requests>=2.31.0     # HTTP requests for updates and external APIs
 
-# Authentication
-requests>=2.31.0
-cryptography>=41.0.0
+# Security and cryptography
+cryptography>=41.0.0 # Cryptographic operations
 
-# CLI
-click>=8.1.0
-colorama>=0.4.6
+# Monitoring and system info
+psutil>=5.9.5        # System and process monitoring
+watchdog>=3.0.0      # File system monitoring
 
-# Future AI/ML capabilities
-numpy>=1.24.0
+# Logging and data handling
+python-dateutil>=2.8.2  # Date/time utilities
 
-# Development and testing
-pytest>=7.4.0
-pytest-cov>=4.1.0
+# Optional: Database support (if needed in future)
+# sqlalchemy>=2.0.0
+
+# Optional: Advanced network monitoring
+# scapy>=2.5.0
+
+# Development dependencies (optional)
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
+# black>=23.0.0
+# flake8>=6.0.0
+# mypy>=1.4.0

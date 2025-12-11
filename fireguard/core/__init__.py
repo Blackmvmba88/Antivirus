@@ -1,15 +1,11 @@
 """
-Core module initialization
+Core Module - Módulo Principal
+
+Este módulo contiene la lógica central del sistema FIREGUARD AI,
+incluyendo el motor principal, gestión de estado y coordinación
+de componentes.
 """
 
-from fireguard.core.platform_detector import PlatformDetector
-from fireguard.core.config_manager import ConfigManager
-from fireguard.core.logger import Logger
-from fireguard.core.sensor_base import SensorBase
+from .engine import FireguardEngine
 
-__all__ = [
-    "PlatformDetector",
-    "ConfigManager",
-    "Logger",
-    "SensorBase",
-]
+__all__ = ['FireguardEngine']
